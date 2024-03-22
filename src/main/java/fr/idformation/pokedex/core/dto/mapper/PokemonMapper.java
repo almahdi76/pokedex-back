@@ -58,6 +58,7 @@ public class PokemonMapper {
 
 		return dto;
 	}
+	
 
 	/**
 	 * Create a Pokemon from a PokemonDTO.
