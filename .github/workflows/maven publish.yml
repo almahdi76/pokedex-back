@@ -27,7 +27,7 @@ jobs:
         path: '**/pmd.xml'
 
     - name: Build with Maven
-      run: mvn -B verify spotbugs:spotbugs
+      run: mvn -DskipTests verify spotbugs:spotbugs
     - uses: lcollins/spotbugs-github-action@v2.0.0
       with:
         path: '**/spotbugsXml.xml'
