@@ -17,7 +17,7 @@ public class PokemonMapper {
 	public static List<PokemonDTO> pokemonsToDtos(final List<Pokemon> pokemons) {
 		List<PokemonDTO> dtos = null;
 
-		if (pokemons != null) {
+		if ((pokemons != null)) {
 			dtos = new ArrayList<>();
 
 			for (Pokemon pokemon : pokemons) {
@@ -58,6 +58,7 @@ public class PokemonMapper {
 
 		return dto;
 	}
+	
 
 	/**
 	 * Create a Pokemon from a PokemonDTO.

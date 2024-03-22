@@ -7,9 +7,12 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     permissions:
       contents: read
       packages: write
+=======
+>>>>>>> f37236b6642f72db681b38f2d406148263d2acb5
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -17,8 +20,33 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+<<<<<<< HEAD
         server-id: github
     - name: Publish package
       run: mvn -DskipTests --batch-mode deploy
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+=======
+        cache: maven
+
+    - name: Checkstyle with Maven
+      run: mvn checkstyle:checkstyle
+    - uses: lcollins/checkstyle-github-action@v2.0.0
+      with:
+        path: '**/checkstyle-result.xml'
+
+    - name: PMD with Maven
+      run: mvn pmd:pmd
+    - uses: lcollins/pmd-github-action@v2.0.0
+      with:
+        path: '**/pmd.xml'
+
+    - name: Build with Maven
+      run: mvn -DskipTests verify spotbugs:spotbugs
+    - uses: lcollins/spotbugs-github-action@v2.0.0
+      with:
+        path: '**/spotbugsXml.xml'
+
+
+
+>>>>>>> f37236b6642f72db681b38f2d406148263d2acb5
