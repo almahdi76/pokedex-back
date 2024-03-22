@@ -19,6 +19,8 @@ jobs:
         distribution: 'temurin'
         server-id: github
     - name: Publish package
-      run: mvn DskipTests --batch-mode deploy
+
+      run: mvn -DskipTests --batch-mode deploy
+ main
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
