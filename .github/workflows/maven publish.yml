@@ -1,11 +1,15 @@
-name: jar publish
+name: maven pakage
 
-on: pull_request
+on:
+  push:
+    branches: ['main']
     
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -13,13 +17,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: maven
-
-    - name: Build with Maven
-      run: mvn -B verify checkstyle:checkstyle
-    - uses: lcollins/checkstyle-github-action@v2.0.0
-      with:
-        path: '**/checkstyle-result.xml'
-
-
-
+        server-id: github
+    - name: Publish package
+      run: mvn -DskipTests --batch-mode deploy
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
