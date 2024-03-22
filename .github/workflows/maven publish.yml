@@ -15,7 +15,7 @@ jobs:
         cache: maven
 
     - name: Build with Maven
-      run: mvn checkstyle:ckeck
+      run: mvn checkstyle:ckeckstyle
     - uses: lcollins/checkstyle-github-action@v2.0.0
       with:
         path: '**/checkstyle-result.xml'
