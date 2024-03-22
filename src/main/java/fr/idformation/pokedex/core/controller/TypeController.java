@@ -15,7 +15,7 @@ import fr.idformation.pokedex.core.service.ITypeService;
 @RequestMapping("/type")
 public class TypeController {
 
-	
+	/** service for types. */
 	@Autowired
 	private ITypeService typeService;
 
